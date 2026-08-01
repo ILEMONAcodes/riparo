@@ -33,7 +33,8 @@ const properties: Property[] = [
       'Redefining sustainable living in Oyo State with solar-integrated power, smart waste management, and vast greenery in a high-growth corridor.',
     titleStatus: 'Registered Survey, C of O (in view)',
     price: 'Contact for Pricing',
-    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
+    imageUrl:
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
     hoverColor: 'bg-[#7D4F2E]',
     hoverTextColor: 'text-white',
   },
@@ -48,7 +49,8 @@ const properties: Property[] = [
       'Purpose-built smart infrastructure catering to high rental yields, student housing, and strategic land appreciation near KWASU campus.',
     titleStatus: 'Verified Survey Title',
     price: '₦1,000,000 / 150 SQM',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop',
+    imageUrl:
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop',
     hoverColor: 'bg-[#FDBE19]',
     hoverTextColor: 'text-[#1F0B05]',
   },
@@ -63,7 +65,8 @@ const properties: Property[] = [
       'A prestigious gated development designed for long-term wealth security, offering prime residential and commercial plots.',
     titleStatus: 'Approved Survey & C of O Processed',
     price: '₦900,000 / 150 SQM',
-    imageUrl: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop',
+    imageUrl:
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop',
     hoverColor: 'bg-[#1F0B05]',
     hoverTextColor: 'text-white',
   },
@@ -73,15 +76,14 @@ export default function DevelopmentsSection() {
   return (
     <section
       id="developments"
-      className="relative z-10 bg-white pt-32 pb-28 px-4 sm:px-6 lg:px-8 -mt-20 overflow-hidden"
+      className="relative z-10 bg-white pt-24 sm:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 -mt-20 border-none outline-none overflow-hidden"
     >
       {/* AMBIENT BACKGROUND GLOW */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-[#FDBE19]/15 via-[#F5EBE1]/40 to-transparent blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        
         {/* HEADER SECTION */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-8">
           {/* HEADLINE - SLIDES IN FROM LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -103,7 +105,8 @@ export default function DevelopmentsSection() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="text-sm sm:text-base text-[#1F0B05]/70 max-w-md font-normal leading-relaxed md:pb-2"
           >
-            Explore verified land titles and high-growth real estate assets engineered for long-term security and exceptional yield.
+            Explore verified land titles and high-growth real estate assets
+            engineered for long-term security and exceptional yield.
           </motion.p>
         </div>
 
@@ -130,10 +133,10 @@ export default function DevelopmentsSection() {
                     sizes="(max-width: 1200px) 100vw, 1200px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  
+
                   {/* Default Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 group-hover:opacity-0 transition-opacity duration-500" />
-                  
+
                   {/* Color Overlay on Hover */}
                   <div
                     className={`absolute inset-0 ${property.hoverColor} opacity-0 group-hover:opacity-95 transition-opacity duration-500`}
@@ -142,7 +145,6 @@ export default function DevelopmentsSection() {
 
                 {/* CARD CONTENT */}
                 <div className="relative z-10 h-full min-h-[440px] sm:min-h-[500px] p-6 sm:p-10 flex flex-col justify-between text-white">
-                  
                   {/* CARD TOP BADGES */}
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold tracking-wider uppercase border border-white/30">
@@ -159,7 +161,9 @@ export default function DevelopmentsSection() {
                   <div className="pt-12 sm:pt-0">
                     <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm font-medium mb-2 group-hover:text-white/90">
                       <MapPin className="w-4 h-4 text-[#FDBE19]" />
-                      <span>{property.location}, {property.state}</span>
+                      <span>
+                        {property.location}, {property.state}
+                      </span>
                     </div>
 
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
@@ -188,15 +192,12 @@ export default function DevelopmentsSection() {
                         </span>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
               </Link>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

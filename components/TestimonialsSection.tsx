@@ -57,37 +57,74 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-// Official Riparo Instagram Reel URL
-const INSTAGRAM_REEL_URL = 'https://www.instagram.com/reel/DZsea-5tdGX/?igsh=MTh4dmpiNjRsOWZpaw==';
+const INSTAGRAM_REEL_URL =
+  'https://www.instagram.com/reel/DZsea-5tdGX/?igsh=MTh4dmpiNjRsOWZpaw==';
+
+// Typed with 'as any' to eliminate Framer Motion dynamic variant TS errors
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (custom: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+      delay: custom,
+    },
+  }),
+} as any;
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative z-10 bg-white py-24 overflow-hidden">
+<section className="relative z-10 bg-white -mt-1 pt-4 sm:pt-6 pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F5EBE1] text-[#7D4F2E] text-xs font-bold uppercase tracking-wider mb-4">
-            <Quote className="w-3.5 h-3.5 text-[#7D4F2E]" />
-            <span>Testimonials</span>
-          </div>
+        {/* SECTION HEADER WITH SCROLL ANIMATIONS */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          {/* Badge */}
+          <motion.div variants={fadeInUp} custom={0}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F5EBE1] text-[#7D4F2E] text-xs font-bold uppercase tracking-wider mb-4">
+              <Quote className="w-3.5 h-3.5 text-[#7D4F2E]" />
+              <span>Testimonials</span>
+            </div>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-[#1F0B05] tracking-tight leading-tight mb-4">
+          {/* Title */}
+          <motion.h2
+            variants={fadeInUp}
+            custom={0.1}
+            className="text-3xl sm:text-5xl font-black text-[#1F0B05] tracking-tight leading-tight mb-4"
+          >
             Trusted by Luxury Owners: <br className="hidden sm:block" />
             their <span className="text-[#FDBE19]">Love</span> for Riparo!
-          </h2>
+          </motion.h2>
 
-          <p className="text-sm sm:text-base text-[#1F0B05]/70 font-medium leading-relaxed">
-            Take our word for it — our clients love our properties and services as much as we do. Here are a few of their wonderful thoughts about us.
-          </p>
-        </div>
+          {/* Subtitle */}
+          <motion.p
+            variants={fadeInUp}
+            custom={0.2}
+            className="text-sm sm:text-base text-[#1F0B05]/70 font-medium leading-relaxed"
+          >
+            Take our word for it — our clients love our properties and services as
+            much as we do. Here are a few of their wonderful thoughts about us.
+          </motion.p>
+        </motion.div>
 
-        {/* FEATURED INSTAGRAM VIDEO CARD IN ARCH / HALF-CIRCLE FRAME */}
-        <div className="flex justify-center mb-20">
+        {/* FEATURED INSTAGRAM VIDEO CARD IN ARCH FRAME */}
+        <motion.div
+          className="flex justify-center mb-16 sm:mb-20"
+          initial={{ opacity: 0, scale: 0.95, y: 40 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        >
           <div className="relative group max-w-md w-full">
             {/* Arch / Half Circle Framed Outer Wrapper */}
             <div className="relative w-full h-[420px] sm:h-[500px] rounded-t-full rounded-b-3xl overflow-hidden border-4 border-[#7D4F2E]/20 shadow-2xl bg-[#1F0B05]">
-              
               {/* Autoplay Preview Video Background */}
               <video
                 autoPlay
@@ -134,10 +171,16 @@ export default function TestimonialsSection() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* SLIDING / MOVING TESTIMONIAL CARDS */}
-        <div className="relative w-full overflow-hidden">
+        {/* SLIDING / MOVING TESTIMONIAL CARDS WITH ENTRANCE FADE */}
+        <motion.div
+          className="relative w-full overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <motion.div
             className="flex gap-6 w-max cursor-grab active:cursor-grabbing"
             animate={{
@@ -172,7 +215,7 @@ export default function TestimonialsSection() {
                   </p>
                 </div>
 
-                {/* Author Info with Clean Initials Avatar */}
+                {/* Author Info */}
                 <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
                   <div className="w-10 h-10 rounded-full bg-[#F5EBE1] text-[#7D4F2E] font-bold text-xs shrink-0 border border-[#7D4F2E]/20 flex items-center justify-center">
                     {item.initials}
@@ -190,8 +233,7 @@ export default function TestimonialsSection() {
               </div>
             ))}
           </motion.div>
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );
