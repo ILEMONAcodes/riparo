@@ -53,7 +53,7 @@ export default function AdminAnalyticsPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 overflow-hidden">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -170,8 +170,8 @@ export default function AdminAnalyticsPage() {
       {/* Main Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Monthly Revenue Breakdown (Bar Chart) */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
-          <div className="flex items-center justify-between">
+        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h3 className="font-bold text-slate-900 text-base">
                 Monthly Revenue vs Target
@@ -192,45 +192,47 @@ export default function AdminAnalyticsPage() {
             </div>
           </div>
 
-          {/* Bar Chart Visualization */}
-          <div className="h-64 flex items-end justify-between gap-3 pt-8 px-2 border-b border-slate-100">
-            {monthlyRevenue.map((item) => (
-              <div
-                key={item.month}
-                className="flex-1 flex flex-col items-center gap-2 h-full justify-end group"
-              >
-                {/* Tooltip on Hover */}
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900 text-white text-[10px] py-1 px-2 rounded font-semibold whitespace-nowrap shadow-md">
-                  {formatNaira(item.revenue)}
-                </div>
+          {/* Scrollable Container on Smaller Screens */}
+          <div className="w-full overflow-x-auto pb-2">
+            <div className="h-64 min-w-[340px] flex items-end justify-between gap-3 pt-8 px-2 border-b border-slate-100">
+              {monthlyRevenue.map((item) => (
+                <div
+                  key={item.month}
+                  className="flex-1 flex flex-col items-center gap-2 h-full justify-end group relative"
+                >
+                  {/* Tooltip on Hover */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-4 bg-slate-900 text-white text-[10px] py-1 px-2 rounded font-semibold whitespace-nowrap shadow-md z-10 pointer-events-none">
+                    {formatNaira(item.revenue)}
+                  </div>
 
-                {/* Bars */}
-                <div className="w-full max-w-[40px] flex items-end gap-1 h-full">
-                  <div
-                    className="w-1/2 bg-slate-200 rounded-t transition-all group-hover:bg-slate-300"
-                    style={{ height: `${(item.target / 110000000) * 100}%` }}
-                  />
-                  <div
-                    className="w-1/2 bg-emerald-600 rounded-t transition-all group-hover:bg-emerald-500"
-                    style={{ height: `${item.height}%` }}
-                  />
-                </div>
+                  {/* Bars */}
+                  <div className="w-full max-w-[32px] flex items-end gap-1 h-full">
+                    <div
+                      className="w-1/2 bg-slate-200 rounded-t transition-all group-hover:bg-slate-300"
+                      style={{ height: `${(item.target / 110000000) * 100}%` }}
+                    />
+                    <div
+                      className="w-1/2 bg-emerald-600 rounded-t transition-all group-hover:bg-emerald-500"
+                      style={{ height: `${item.height}%` }}
+                    />
+                  </div>
 
-                <span className="text-xs font-semibold text-slate-600 mt-2">
-                  {item.month}
-                </span>
-              </div>
-            ))}
+                  <span className="text-xs font-semibold text-slate-600 mt-2">
+                    {item.month}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-slate-500 pt-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 gap-1 pt-2">
             <span>Highest Performing Month: <strong>July (₦110M)</strong></span>
             <span>Overall Target Attainment: <strong className="text-emerald-600">114%</strong></span>
           </div>
         </div>
 
         {/* Lead Source Distribution */}
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
+        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6 min-w-0">
           <div>
             <h3 className="font-bold text-slate-900 text-base">
               Lead Source Distribution
