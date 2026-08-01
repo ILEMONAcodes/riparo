@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Footer from '@/components/footer';
+import SplashPreloader from '@/components/branding/SplashPreloader';
 
 export const metadata: Metadata = {
   title: 'Riparo Real Estate & Construction',
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased min-h-screen flex flex-col bg-[#1F0B05] text-white">
+      <body className="antialiased min-h-screen flex flex-col bg-white text-[#1F0B05]">
+        {/* Global Splash Preloader */}
+        <SplashPreloader />
+
         {/* Main page content container */}
         <main className="flex-grow">
           {children}

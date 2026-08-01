@@ -24,8 +24,24 @@ const config: Config = {
         'riparo-glow-yellow': '0 4px 20px rgba(253, 190, 25, 0.35)',
         'riparo-glow-brown': '0 4px 20px rgba(31, 11, 5, 0.25)',
       },
+      animation: {
+        'bounce-slow': 'bounce-slow 2s infinite',
+      },
+      keyframes: {
+        'bounce-slow': {
+          '0%, 100%': {
+            transform: 'translateY(-10%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+        },
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

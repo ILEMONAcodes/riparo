@@ -55,6 +55,16 @@ export default function Navbar() {
           {/* DESKTOP NAVIGATION LINKS */}
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold transition-colors duration-300">
             <a
+              href="#"
+              className={`${
+                scrolled
+                  ? 'text-[#1F0B05] hover:text-[#FDBE19]'
+                  : 'text-white hover:text-[#FDBE19] drop-shadow-sm'
+              } transition-colors`}
+            >
+              Home
+            </a>
+            <a
               href="#about"
               className={`${
                 scrolled
@@ -73,26 +83,6 @@ export default function Navbar() {
               } transition-colors`}
             >
               Developments
-            </a>
-            <a
-              href="#land-banking"
-              className={`${
-                scrolled
-                  ? 'text-[#1F0B05] hover:text-[#FDBE19]'
-                  : 'text-white hover:text-[#FDBE19] drop-shadow-sm'
-              } transition-colors`}
-            >
-              Land Banking
-            </a>
-            <a
-              href="#advisory"
-              className={`${
-                scrolled
-                  ? 'text-[#1F0B05] hover:text-[#FDBE19]'
-                  : 'text-white hover:text-[#FDBE19] drop-shadow-sm'
-              } transition-colors`}
-            >
-              Title Advisory
             </a>
             <a
               href="#contact"
@@ -137,6 +127,13 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 p-6 rounded-3xl bg-white shadow-2xl border border-gray-100 text-[#1F0B05] flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
             <a
+              href="#"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-semibold py-2 border-b border-gray-100"
+            >
+              Home
+            </a>
+            <a
               href="#about"
               onClick={() => setMobileMenuOpen(false)}
               className="text-base font-semibold py-2 border-b border-gray-100"
@@ -149,20 +146,6 @@ export default function Navbar() {
               className="text-base font-semibold py-2 border-b border-gray-100"
             >
               Developments
-            </a>
-            <a
-              href="#land-banking"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-semibold py-2 border-b border-gray-100"
-            >
-              Land Banking
-            </a>
-            <a
-              href="#advisory"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-semibold py-2 border-b border-gray-100"
-            >
-              Title Advisory
             </a>
             <a
               href="#contact"

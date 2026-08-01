@@ -62,7 +62,7 @@ const INSTAGRAM_REEL_URL = 'https://www.instagram.com/reel/DZsea-5tdGX/?igsh=MTh
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative z-10 bg-[#FDFBF7] py-24 overflow-hidden">
+    <section className="relative z-10 bg-white py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* SECTION HEADER */}

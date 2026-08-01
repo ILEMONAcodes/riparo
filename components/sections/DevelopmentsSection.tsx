@@ -73,53 +73,53 @@ export default function DevelopmentsSection() {
   return (
     <section
       id="developments"
-      className="relative z-10 bg-[#FDFBF7] pt-24 pb-28 px-4 sm:px-6 lg:px-8 -mt-16"
+      className="relative z-10 bg-white pt-32 pb-28 px-4 sm:px-6 lg:px-8 -mt-20 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        
-        {/* HEADER SECTION WITH LOGO & DEVELOPMENTS BADGE */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6 border-b border-[#1F0B05]/10 pb-8 sm:pb-10">
-          <div>
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 flex-wrap">
-              <div className="relative h-10 w-36 flex items-center shrink-0">
-                <Image
-                  src="/logo.png"
-                  alt="Riparo Logo"
-                  width={144}
-                  height={40}
-                  className="object-contain object-left"
-                  priority
-                />
-              </div>
-              
-              <span className="px-3.5 py-1.5 rounded-full bg-[#F5EBE1] text-[#7D4F2E] text-xs font-bold uppercase tracking-wider">
-                Developments
-              </span>
-            </div>
-            
-            <h2 className="text-3xl sm:text-5xl font-black text-[#1F0B05] tracking-tight">
-              Prime Properties & Land Assets
-            </h2>
-          </div>
+      {/* AMBIENT BACKGROUND GLOW */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-[#FDBE19]/15 via-[#F5EBE1]/40 to-transparent blur-3xl pointer-events-none" />
 
-          <p className="text-sm sm:text-base text-[#1F0B05]/70 max-w-md font-medium leading-relaxed">
-            Explore verified real estate opportunities across high-growth corridors in Nigeria.
-          </p>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* HEADER SECTION */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 gap-8">
+          {/* HEADLINE - SLIDES IN FROM LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="max-w-3xl"
+          >
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1F0B05] tracking-tight leading-[1.08]">
+              Discover Your Next Investment
+            </h2>
+          </motion.div>
+
+          {/* SUBTITLE - SLIDES IN FROM RIGHT */}
+          <motion.p
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="text-sm sm:text-base text-[#1F0B05]/70 max-w-md font-normal leading-relaxed md:pb-2"
+          >
+            Explore verified land titles and high-growth real estate assets engineered for long-term security and exceptional yield.
+          </motion.p>
         </div>
 
         {/* PROPERTY CARDS */}
-        <div className="grid grid-cols-1 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 gap-10 sm:gap-14">
           {properties.map((property, index) => (
             <motion.div
               key={property.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
             >
               <Link
                 href={`/developments/${property.id}`}
-                className="group relative block w-full min-h-[420px] sm:min-h-[480px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
+                className="group relative block w-full min-h-[440px] sm:min-h-[500px] rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-black/5"
               >
                 {/* Background Image Container */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -134,16 +134,16 @@ export default function DevelopmentsSection() {
                   {/* Default Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 group-hover:opacity-0 transition-opacity duration-500" />
                   
-                  {/* Plane Color Overlay on Hover */}
+                  {/* Color Overlay on Hover */}
                   <div
                     className={`absolute inset-0 ${property.hoverColor} opacity-0 group-hover:opacity-95 transition-opacity duration-500`}
                   />
                 </div>
 
                 {/* CARD CONTENT */}
-                <div className="relative z-10 h-full min-h-[420px] sm:min-h-[480px] p-6 sm:p-10 flex flex-col justify-between text-white">
+                <div className="relative z-10 h-full min-h-[440px] sm:min-h-[500px] p-6 sm:p-10 flex flex-col justify-between text-white">
                   
-                  {/* CARD TOP BADGES (CLEAN CATEGORY PILL WITHOUT ICON) */}
+                  {/* CARD TOP BADGES */}
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold tracking-wider uppercase border border-white/30">
                       {property.category}

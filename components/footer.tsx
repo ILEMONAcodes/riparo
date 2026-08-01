@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Phone, 
   Mail, 
@@ -29,40 +31,17 @@ export default function Footer() {
         {/* TOP SECTION: 4-COLUMN LAYOUT */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* COLUMN 1: BRAND OVERVIEW */}
+          {/* COLUMN 1: BRAND OVERVIEW WITH INVERTED WHITE LOGO */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              {/* SVG Logo matching original spacing with white animated glow */}
-              <div className="relative w-11 h-11 shrink-0 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-                  <defs>
-                    <filter id="whiteGlow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="white" floodOpacity="0.9" />
-                    </filter>
-                  </defs>
-
-                  {/* 1. Large Base Circle (Dark Brown / Maroon) */}
-                  <circle cx="34" cy="66" r="26" fill="maroon" />
-
-                  {/* 2. Small Top Circle (Saddlebrown) */}
-                  <circle cx="34" cy="22" r="12" fill="saddlebrown" />
-
-                  {/* 3. Medium Yellow Circle with White Animated Pulse Glow */}
-                  <circle 
-                    cx="68" 
-                    cy="26" 
-                    r="16" 
-                    fill="yellow" 
-                    filter="url(#whiteGlow)"
-                    className="animate-pulse"
-                  />
-                </svg>
-              </div>
-
-              <span className="text-2xl font-bold text-white tracking-wide lowercase">
-                riparo
-              </span>
-            </div>
+            <Link href="/" className="relative w-36 h-12 block">
+              <Image
+                src="/logo.png"
+                alt="riparo"
+                fill
+                priority
+                className="object-contain object-left brightness-0 invert"
+              />
+            </Link>
 
             <p className="text-xs text-white/70 leading-relaxed font-normal pr-4">
               Your trusted partner for verified, high-yield land and luxury real estate investments across Nigeria.
@@ -137,7 +116,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4">
           <p>&copy; {new Date().getFullYear()} riparo Real Estate. All rights reserved.</p>
 
-          {/* SOCIAL LINKS */}
+          {/* SOCIAL LINKS (FontAwesome via react-icons/fa) */}
           <div className="flex items-center gap-4">
             <a
               href="https://www.instagram.com/riparo_ng/?hl=en"
