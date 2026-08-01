@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { 
   Phone, 
   Mail, 
-  MapPin 
+  MapPin,
+  Lock
 } from 'lucide-react';
 import { 
   FaInstagram, 
@@ -16,7 +18,18 @@ import {
 } from 'react-icons/fa';
 
 export default function Footer() {
+  const pathname = usePathname();
   const [email, setEmail] = useState('');
+
+  // Automatically hide the footer on Admin, Agent, and Login routes
+  const isInternalRoute = 
+    pathname?.startsWith('/admin') || 
+    pathname?.startsWith('/agent') || 
+    pathname === '/login';
+
+  if (isInternalRoute) {
+    return null;
+  }
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +44,7 @@ export default function Footer() {
         {/* TOP SECTION: 4-COLUMN LAYOUT */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* COLUMN 1: BRAND OVERVIEW WITH INVERTED WHITE LOGO */}
+          {/* COLUMN 1: BRAND OVERVIEW */}
           <div className="space-y-4">
             <Link href="/" className="relative w-36 h-12 block">
               <Image
@@ -54,11 +67,22 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2 text-xs font-medium text-white/70">
-              <li><a href="#" className="hover:text-[#FDBE19] transition-colors">Home</a></li>
-              <li><a href="#" className="hover:text-[#FDBE19] transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-[#FDBE19] transition-colors">Featured Estates</a></li>
-              <li><a href="#" className="hover:text-[#FDBE19] transition-colors">Testimonials</a></li>
-              <li><a href="#" className="hover:text-[#FDBE19] transition-colors">Contact</a></li>
+              <li><Link href="/" className="hover:text-[#FDBE19] transition-colors">Home</Link></li>
+              <li><Link href="#about" className="hover:text-[#FDBE19] transition-colors">About Us</Link></li>
+              <li><Link href="#estates" className="hover:text-[#FDBE19] transition-colors">Featured Estates</Link></li>
+              <li><Link href="#testimonials" className="hover:text-[#FDBE19] transition-colors">Testimonials</Link></li>
+              <li><Link href="#contact" className="hover:text-[#FDBE19] transition-colors">Contact</Link></li>
+              
+              {/* STAFF PORTAL ACCESS */}
+              <li className="pt-2 border-t border-white/10">
+                <Link 
+                  href="/login" 
+                  className="inline-flex items-center gap-1.5 text-xs text-[#FDBE19] hover:underline font-bold"
+                >
+                  <Lock className="w-3.5 h-3.5 text-[#FDBE19]" />
+                  <span>Staff Portal</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -116,7 +140,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4">
           <p>&copy; {new Date().getFullYear()} riparo Real Estate. All rights reserved.</p>
 
-          {/* SOCIAL LINKS (FontAwesome via react-icons/fa) */}
+          {/* SOCIAL LINKS */}
           <div className="flex items-center gap-4">
             <a
               href="https://www.instagram.com/riparo_ng/?hl=en"
